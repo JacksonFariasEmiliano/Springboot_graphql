@@ -18,13 +18,13 @@ public class QueryGraphQl implements GraphQLQueryResolver {
     }
 
     public Cliente cliente(){
-        return new Cliente("Jackson", "jk@gmail.com");
+        return new Cliente(1L, "Jackson", "jk@gmail.com");
     }
 
     public List<Cliente> clientes(){
         List<Cliente> list = new ArrayList<>();
         for (int i = 0; i < 10; i++){
-            list.add(new Cliente("Cliente " + i, "jk"+i+"@gmail.com"));
+            list.add(new Cliente(2L, "Cliente " + i, "jk"+i+"@gmail.com"));
         }
         return list;
     }
