@@ -1,6 +1,9 @@
-package com.example.compras;
+package com.example.compras.graphql;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.example.compras.cliente.ClienteRepository;
+import com.example.compras.domain.Cliente;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,20 +15,8 @@ public class QueryGraphQl implements GraphQLQueryResolver {
     public String hello(){
         return "Hello GraphQL";
     }
-
     public int soma(int a, int b){
         return a+b;
     }
 
-    public Cliente cliente(){
-        return new Cliente(1L, "Jackson", "jk@gmail.com");
-    }
-
-    public List<Cliente> clientes(){
-        List<Cliente> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++){
-            list.add(new Cliente(2L, "Cliente " + i, "jk"+i+"@gmail.com"));
-        }
-        return list;
-    }
 }
