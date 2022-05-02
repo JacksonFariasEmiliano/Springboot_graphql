@@ -1,7 +1,8 @@
 package com.example.compras.service;
 
-import com.example.compras.repository.ClienteRepository;
 import com.example.compras.domain.Cliente;
+import com.example.compras.domain.Compra;
+import com.example.compras.repository.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,22 +10,22 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class ClienteService {
+public class CompraService {
 
     @Autowired
-    private ClienteRepository repository;
+    private CompraRepository repository;
 
-    public Cliente findById(Long id){
+    public Compra findById(Long id){
         return repository.findById(id).orElse(null);
     }
 
-    public List<Cliente> findAll(){
+    public List<Compra> findAll(){
         return repository.findAll();
     }
 
     @Transactional
-    public Cliente save(Cliente cliente){
-         return repository.save(cliente);
+    public Compra save(Compra compra){
+        return repository.save(compra);
     }
 
     @Transactional
@@ -34,5 +35,9 @@ public class ClienteService {
             return true;
         }
         return false;
+    }
+
+    public List<Compra> findAllByCliente(Cliente cliente) {
+        return repository.findAllByCliente(cliente);
     }
 }

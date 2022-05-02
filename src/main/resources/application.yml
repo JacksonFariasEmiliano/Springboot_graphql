@@ -8,10 +8,13 @@ spring:
     password: root
   jpa:
     hibernate:
+      format_sql: false
       ddl-auto: update
     show-sql: true
 
 logging:
+#  pattern:
+#    console: {%d{yyy-MM-dd HH:mm:ss} %~5level %logger{36} ~ %msg%n}
   level:
     org:
       hibernate:

@@ -1,7 +1,7 @@
 package com.example.compras.service;
 
-import com.example.compras.repository.ClienteRepository;
-import com.example.compras.domain.Cliente;
+import com.example.compras.domain.Produto;
+import com.example.compras.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,22 +9,22 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class ClienteService {
+public class ProdutoService {
 
     @Autowired
-    private ClienteRepository repository;
+    private ProdutoRepository repository;
 
-    public Cliente findById(Long id){
+    public Produto fidById(Long id){
         return repository.findById(id).orElse(null);
     }
 
-    public List<Cliente> findAll(){
+    public List<Produto> findAll(){
         return repository.findAll();
     }
 
     @Transactional
-    public Cliente save(Cliente cliente){
-         return repository.save(cliente);
+    public Produto save(Produto produto){
+        return repository.save(produto);
     }
 
     @Transactional
