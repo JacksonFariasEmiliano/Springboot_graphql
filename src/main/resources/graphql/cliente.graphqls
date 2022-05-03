@@ -3,14 +3,13 @@ type Cliente {
     nome:String!,
     email:String!
     compras:[Compra]!
+    compraList(quantidade:Int):[Compra]!
 }
 
 input ClienteInput{
     id:ID,
     nome:String!,
     email:String!
-
-
 }
 
 extend type Query {

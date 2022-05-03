@@ -5,11 +5,15 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.example.compras.domain.Compra;
 import com.example.compras.domain.CompraInput;
 import com.example.compras.domain.Produto;
+import com.example.compras.domain.dto.CompraResumo;
 import com.example.compras.service.ClienteService;
 import com.example.compras.service.CompraService;
 import com.example.compras.service.ProdutoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -31,8 +35,13 @@ public class CompraGraphQl implements GraphQLQueryResolver, GraphQLMutationResol
         return service.findById(id);
     }
 
-    public List<Compra> compras(){
-        return service.findAll();
+    public List<Compra> compras(int page, int size){
+        Pageable pageable = PageRequest.of(page, size, Sort.by("quantidade").descending());
+        return service.findAll(pageable);
+    }
+
+    public List<CompraResumo> getComprasRelatorio(){
+        return service.findAllComprasRelatorio();
     }
 
     public Compra saveCompra(CompraInput input){

@@ -2,8 +2,10 @@ package com.example.compras.service;
 
 import com.example.compras.domain.Cliente;
 import com.example.compras.domain.Compra;
+import com.example.compras.domain.dto.CompraResumo;
 import com.example.compras.repository.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -19,8 +21,8 @@ public class CompraService {
         return repository.findById(id).orElse(null);
     }
 
-    public List<Compra> findAll(){
-        return repository.findAll();
+    public List<Compra> findAll(Pageable pageable){
+        return repository.findAll(pageable).getContent();
     }
 
     @Transactional
@@ -39,5 +41,13 @@ public class CompraService {
 
     public List<Compra> findAllByCliente(Cliente cliente) {
         return repository.findAllByCliente(cliente);
+    }
+
+    public List<Compra> findAllByClienteAndQuantidade(Cliente cliente, int quantidade){
+        return repository.findAllByClienteAndQuantidade(cliente, quantidade);
+    }
+
+    public List<CompraResumo> findAllComprasRelatorio() {
+        return repository.findAllCompraRelatorio();
     }
 }
