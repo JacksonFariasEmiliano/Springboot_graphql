@@ -3,6 +3,7 @@ package com.example.compras.service;
 import com.example.compras.domain.Cliente;
 import com.example.compras.domain.Compra;
 import com.example.compras.domain.dto.CompraResumo;
+import com.example.compras.exceptions.DomainException;
 import com.example.compras.repository.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -27,6 +28,9 @@ public class CompraService {
 
     @Transactional
     public Compra save(Compra compra){
+        if(compra.getQuantidade() > 100){
+            throw new DomainException("Não é possivel fazer uma compra com mais de 100 itens");
+        }
         return repository.save(compra);
     }
 

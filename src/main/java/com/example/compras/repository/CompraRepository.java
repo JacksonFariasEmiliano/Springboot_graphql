@@ -13,7 +13,8 @@ import java.util.List;
 @Repository
 public interface CompraRepository extends JpaRepository<Compra, Long> {
 
-//    @Query("select c from Compra c where c.cliente.id = :clienteId")
+//    Simulação de bug
+//    @Query("select c from Compra c where c.cliente.id = :clienteIdXX")
 //    List<Compra> findAllByCliente(@Param("clienteId") Long clienteId);
 
 //    @Query("select c from Compra c where c.cliente = :cliente")
