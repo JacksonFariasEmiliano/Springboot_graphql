@@ -36,7 +36,8 @@ public class CompraGraphQl implements GraphQLQueryResolver, GraphQLMutationResol
     }
 
     public List<Compra> compras(int page, int size){
-        Pageable pageable = PageRequest.of(page, size, Sort.by("quantidade").descending());
+//        Pageable pageable = PageRequest.of(page, size, Sort.by("quantidade").descending());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("quantidade"));
         return service.findAll(pageable);
     }
 

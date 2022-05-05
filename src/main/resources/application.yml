@@ -1,6 +1,7 @@
 server:
   error:
     include-stacktrace: on_trace_param
+  port: ${PORT:5000}
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/compras?createDatabaseIfNotExist=true

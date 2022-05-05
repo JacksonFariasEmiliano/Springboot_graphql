@@ -35,13 +35,13 @@ public class GraphQLHandler implements GraphQLErrorHandler {
                 return new SimpleError(msg);
             }
 
-            //Profile = ambiente ... Ativo
-            String[] profiles = env.getActiveProfiles();
-            boolean dev = ArrayUtils.contains(profiles, "dev");
-            if (!dev) {
-                //logar p error
-                return new SimpleError("Ocorreu um erro ao processar a transação");
-            }
+//            //Profile = ambiente ... Ativo
+//            String[] profiles = env.getActiveProfiles();
+//            boolean dev = ArrayUtils.contains(profiles, "dev");
+//            if (!dev) {
+//                //logar p error
+//                return new SimpleError("Ocorreu um erro ao processar a transação");
+//            }
 
         } else if (error instanceof ValidationError) {
             String msg = error.getMessage();

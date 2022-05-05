@@ -13,18 +13,18 @@
         maxElementsInMemory="10000"
         eternal="false"
         timeToIdleSeconds="3600"
-        timeToLiveleSeconds="3600"
+        timeToLiveSeconds="3600"
         overflowToDisk="true"
         diskPersistent="true"
         memoryStoreEvictionPolicy="LRU"
     />
 
     <cache name="clientes"
-           maxElementsIMemory="10000"
+           maxElementsInMemory="100000"
     />
 
     <cache name="comprasByCliente"
-           maxElementsIMemory="10000"
+           maxElementsInMemory="10000"
     />
 
 </ehcache>

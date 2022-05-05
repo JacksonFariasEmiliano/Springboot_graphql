@@ -5,9 +5,10 @@ import com.example.compras.domain.Compra;
 import com.example.compras.domain.dto.CompraResumo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.QueryHint;
 import java.util.List;
 
 @Repository
@@ -20,6 +21,7 @@ public interface CompraRepository extends JpaRepository<Compra, Long> {
 //    @Query("select c from Compra c where c.cliente = :cliente")
 //    List<Compra> findAllByCliente(@Param("cliente") Cliente cliente);
 
+    @QueryHints({@QueryHint(name = "org.hibernate,cacheable", value = "true")})
     List<Compra> findAllByCliente(Cliente cliente);
 
     List<Compra> findAllByClienteAndQuantidade(Cliente cliente, int quantidade);
